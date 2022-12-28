@@ -49,7 +49,7 @@ After running the above commands, you should be able to access the application a
 ## Setup
 Login details
 * Email: admin@test.com
-* Password: test1234
+* Password: password
 
 ## Usage
 * Manage employees
