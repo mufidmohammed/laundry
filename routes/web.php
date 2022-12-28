@@ -21,12 +21,12 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::resource('employee', EmployeeController::class)->except('show');
-Route::resource('customer', CustomerController::class)->except('show');
-Route::resource('expenditure', ExpenditureController::class)->except('show');
-Route::resource('laundry', LaundryController::class)->except('show');
-Route::resource('transaction', TransactionController::class)->except('show');
+Route::resource('employee', EmployeeController::class)->except('show')->middleware('auth');
+Route::resource('customer', CustomerController::class)->except('show')->middleware('auth');
+Route::resource('expenditure', ExpenditureController::class)->except('show')->middleware('auth');
+Route::resource('laundry', LaundryController::class)->except('show')->middleware('auth');
+Route::resource('transaction', TransactionController::class)->except('show')->middleware('auth');
 
 require __DIR__ . '/auth.php';
