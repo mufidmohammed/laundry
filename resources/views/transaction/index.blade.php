@@ -27,10 +27,10 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Customer Name<sup>(M/F)</sup></th>
+                                        {{-- <th>Customer Name<sup>(M/F)</sup></th> --}}
                                         <th>Employee Name<sup>(M/F)</sup></th>
                                         <th>Laundry Type</th>
-                                        <th>Weight</th>
+                                        {{-- <th>Weight</th> --}}
                                         <th>Total</th>
                                         <th>Order Date</th>
                                         <th>Finish Date</th>
@@ -41,11 +41,11 @@
                                     @foreach ($transactions as $transaction)
                                     <tr>
                                         <td>{{ $transaction->id }}</td>
-                                        <td>{{ $transaction->customer->name }}</td>
+                                        {{-- <td>{{ $transaction->customer->name }}</td> --}}
                                         <td>{{ $transaction->employee->name }}</td>
                                         <td>{{ $transaction->laundry->type }}</td>
-                                        <td>{{ $transaction->weight }}</td>
-                                        <td>{{ $transaction->laundry->price * $transaction->weight }}</td>
+                                        {{-- <td>{{ $transaction->weight }}</td> --}}
+                                        <td>Ghc {{ $transaction->laundry->price * $transaction->weight }}</td>
                                         <td>{{ \Carbon\Carbon::create($transaction->order_date)->diffForHumans() }}</td>
                                         <td>{{ $transaction->finish_date ? \Carbon\Carbon::create($transaction->finish_date)->diffForHumans() : '----' }}</td>
                                         <td>

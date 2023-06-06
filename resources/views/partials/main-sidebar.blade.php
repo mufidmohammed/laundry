@@ -29,7 +29,7 @@
                 font-awesome or any other icon font library -->
 
                 <li class="nav-item menu-open mb-2">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item menu-open mb-2">
-                    <a href="{{ route('employee.index') }}" class="nav-link">
+                    <a href="{{ route('employee.index') }}" class="nav-link {{ request()->routeIs('employee.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Employees
@@ -47,7 +47,7 @@
                 </li>
 
                 <li class="nav-item menu-open mb-2">
-                    <a href="{{ route('customer.index') }}" class="nav-link">
+                    <a href="{{ route('customer.index') }}" class="nav-link {{ request()->routeIs('customer.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Customers
@@ -56,7 +56,7 @@
                 </li>
 
                 <li class="nav-item menu-open mb-2">
-                    <a href="{{ route('laundry.index') }}" class="nav-link">
+                    <a href="{{ route('laundry.index') }}" class="nav-link {{ request()->routeIs('laundry.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Laundry
@@ -65,7 +65,7 @@
                 </li>
 
                 <li class="nav-item menu-open mb-2">
-                    <a href="{{ route('transaction.index') }}" class="nav-link">
+                    <a href="{{ route('transaction.index') }}" class="nav-link {{ request()->routeIs('transaction.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Transaction
@@ -74,7 +74,7 @@
                 </li>
 
                 <li class="nav-item menu-open mb-2">
-                    <a href="{{ route('expenditure.index') }}" class="nav-link">
+                    <a href="{{ route('expenditure.index') }}" class="nav-link {{ request()->routeIs('expenditure.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Expenditure

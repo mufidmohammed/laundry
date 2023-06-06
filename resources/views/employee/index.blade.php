@@ -28,11 +28,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name<sup>(M/F)</sup></th>
-                                        <th>Address</th>
                                         <th>Contact</th>
-                                        <th>Salary</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
+                                        <th>Salary (Ghc)</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -41,11 +38,8 @@
                                     <tr>
                                         <td>{{ $employee->id }}</td>
                                         <td>{{ $employee->name }}<sup>({{ $employee->gender }})</sup></td>
-                                        <td>{{ $employee->address }}</td>
                                         <td>{{ $employee->contact }}</td>
                                         <td>{{ $employee->salary }}</td>
-                                        <td>{{ \Carbon\Carbon::create($employee->start_date)->diffForHumans() }}</td>
-                                        <td>{{ $employee->end_date ? \Carbon\Carbon::create($employee->end_date)->diffForHumans() : '----' }}</td>
                                         <td>
                                             <div class="row d-flex justify-content-center">
                                                 <a href="{{ route('employee.edit', $employee->id) }}"

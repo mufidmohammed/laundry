@@ -24,7 +24,10 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- Datatables -->
     <link rel="stylesheet" href="{{ asset('plugins\datatables-bs4\css\dataTables.bootstrap4.min.css') }}">
+    <!-- Charts -->
+    <link rel="stylesheet" href="{{ asset('plugins/chart.js/Chart.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

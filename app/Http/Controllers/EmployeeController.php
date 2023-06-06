@@ -10,7 +10,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::latest()->get();
+        $employees = Employee::all();
 
         return view('employee.index', compact('employees'));
     }
@@ -22,8 +22,6 @@ class EmployeeController extends Controller
 
     public function store(EmployeeRequest $request)
     {
-        $data = $request->validated();
-
         Employee::create($request->validated());
 
         return to_route('employee.index')->with('message', 'Employee added successfully');

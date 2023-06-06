@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('laundries', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('price');
+            $table->decimal('price');
             $table->timestamps();
         });
     }

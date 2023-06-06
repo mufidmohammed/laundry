@@ -99,7 +99,7 @@
                                         <tr>
                                             <td>{{ $expenditure->id }}</td>
                                             <td>{{ $expenditure->details }}</td>
-                                            <td>{{ $expenditure->total }}</td>
+                                            <td>Ghc {{ $expenditure->total }}</td>
                                             <td>{{ $expenditure->employee->name }}</td>
                                             <td>{{ \Carbon\Carbon::create($expenditure->date)->diffForHumans() }}</td>
                                             <td>
