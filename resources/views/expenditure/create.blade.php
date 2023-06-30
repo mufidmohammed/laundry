@@ -15,7 +15,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="details">details</label>
+                                <label for="details">Description</label>
                                 <input type="text" name="details" class="form-control" value="{{ old('details') }}">
                             </div>
                             <div class="form-group">

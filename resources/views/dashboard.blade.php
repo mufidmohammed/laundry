@@ -99,7 +99,7 @@
             <!-- PIE CHART -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Sales</h3>
+                    <h3 class="card-title">Weekly transactions</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -111,10 +111,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="chart">
-                        <canvas id="pieChart"
-                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    <div>
+                        <canvas id="myChart"></canvas>
                     </div>
+
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -126,27 +126,33 @@
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 
     <script>
+        const ctx = document.getElementById('myChart');
 
+        @php
+            $daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        @endphp
 
-        var donutChartCanvas = document.getElementById('pieChart');
-
-        var donutData = {
-            labels: ['Smock', 'T-shirt', 'Jeans', 'Skirt', 'Trousers'],
-            datasets: [{
-                data: [700, 500, 400, 600, 300],
-                backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc'],
-            }]
-        }
-
-        var donutOptions = {
-            maintainAspectRatio: false,
-            responsive: true,
-        }
-
-        new Chart(donutChartCanvas, {
-            type: 'doughnut',
-            data: donutData,
-            options: donutOptions
-        })
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: '# of transactions',
+                    data: [
+                        @foreach ($daysOfWeek as $day)
+                            {{ $transactionCounts[$day] }},
+                        @endforeach
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 @endsection

@@ -33,8 +33,6 @@ class ExpenditureController extends Controller
     {
         $expenditure = Expenditure::find($id);
 
-        $expenditure->date = \Carbon\Carbon::create($expenditure->date)->toDateTimeLocalString();
-
         $employees = Employee::all();
 
         return view('expenditure.edit', compact('expenditure', 'employees'));

@@ -16,7 +16,7 @@
             </div>
             @auth
             <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                <span class="d-block text-gray">{{ auth()->user()->name }}</span>
             </div>
             @endauth
         </div>

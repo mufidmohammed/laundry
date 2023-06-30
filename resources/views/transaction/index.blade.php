@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id='table-transaction' class="table-striped table-hover table-bordered" width="100%" cellspacing="0">
+                            <table id='table-transaction' class="table table-striped" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -46,19 +46,19 @@
                                         <td>{{ $transaction->laundry->type }}</td>
                                         {{-- <td>{{ $transaction->weight }}</td> --}}
                                         <td>Ghc {{ $transaction->laundry->price * $transaction->weight }}</td>
-                                        <td>{{ \Carbon\Carbon::create($transaction->order_date)->diffForHumans() }}</td>
-                                        <td>{{ $transaction->finish_date ? \Carbon\Carbon::create($transaction->finish_date)->diffForHumans() : '----' }}</td>
+                                        <td>{{ $transaction->order_date }}</td>
+                                        <td>{{ $transaction->finish_date ? $transaction->finish_date : '----' }}</td>
                                         <td>
                                             <div class="row d-flex justify-content-center">
                                                 <a href="{{ route('transaction.edit', $transaction->id) }}"
-                                                    class="btn btn-primary mr-2 mb-1">Edit <i class="fa fa-edit"></i></a>
+                                                    class="btn btn-primary mr-2 mb-1"><i class="fa fa-edit"></i></a>
                                                 <form class="form-inline" id="{{ $transaction->id }}"
                                                     action="{{ route('transaction.destroy', $transaction->id) }}"
                                                     onsubmit="return confirm('You are about to delete a record. Proceed?')"
                                                     method="POST">
                                                     @csrf
                                                     @method("DELETE")
-                                                    <button class="btn btn-danger" type="submit">Remove <i
+                                                    <button class="btn btn-danger" type="submit"><i
                                                             class="fa fa-times"></i></button>
                                                 </form>
                                             </div>

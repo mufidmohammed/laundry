@@ -45,8 +45,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2022
-            <div class="float-right d-none d-sm-inline-block">
+            <div class="m-2 float-right d-none d-sm-inline-block">
                 <b>LaundryService</b>
             </div>
     </footer>

@@ -23,14 +23,14 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id='table-customer' class="table-striped table-hover table-bordered" width="100%" cellspacing="0">
+                            <table id='table-customer' class="table table-striped" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Name<sup>(M/F)</sup></th>
                                         <th>Address</th>
                                         <th>Contact</th>
-                                        <th class="text-center">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,9 +41,9 @@
                                         <td>{{ $customer->address }}</td>
                                         <td>{{ $customer->contact }}</td>
                                         <td>
-                                            <div class="row d-flex justify-content-center">
+                                            <div class="d-flex">
                                                 <a href="{{ route('customer.edit', $customer->id) }}"
-                                                    class="btn btn-primary mr-2 mb-1">Edit <i class="fa fa-edit"></i>
+                                                    class="btn btn-primary mr-2 mb-1"><i class="fa fa-edit"></i>
                                                 </a>
                                                 <form class="form-inline" id="{{ $customer->id }}"
                                                     action="{{ route('customer.destroy', $customer->id) }}"
@@ -51,7 +51,7 @@
                                                     method="POST">
                                                     @csrf
                                                     @method("DELETE")
-                                                    <button class="btn btn-danger" type="submit">Remove <i
+                                                    <button class="btn btn-danger" type="submit"><i
                                                             class="fa fa-times"></i></button>
                                                 </form>
                                             </div>

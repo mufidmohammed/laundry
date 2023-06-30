@@ -25,29 +25,29 @@
                         <table id='table-laundry' class="table responsive table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Type</th>
-                                    <th>Price</th>
-                                    <th class="text-center">Action</th>
+                                    <th class="px-2">ID</th>
+                                    <th class="px-2">Type</th>
+                                    <th class="px-2">Price</th>
+                                    <th class="px-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($laundries as $laundry)
                                 <tr>
-                                    <td>{{ $laundry->id }}</td>
-                                    <td>{{ $laundry->type }}</td>
-                                    <td>Ghc{{ $laundry->price }}</td>
-                                    <td>
-                                        <div class="row d-flex justify-content-center">
+                                    <td class="px-2">{{ $laundry->id }}</td>
+                                    <td class="px-2">{{ $laundry->type }}</td>
+                                    <td class="px-2">Ghc{{ $laundry->price }}</td>
+                                    <td class="px-2">
+                                        <div class="row d-flex ">
                                             <a href="{{ route('laundry.edit', $laundry->id) }}"
-                                                class="btn btn-primary mr-2 mb-1">Edit <i class="fa fa-edit"></i></a>
+                                                class="btn btn-primary mr-2 mb-1"><i class="fa fa-edit"></i></a>
                                             <form class="form-inline" id="{{ $laundry->id }}"
                                                 action="{{ route('laundry.destroy', $laundry->id) }}"
                                                 onsubmit="return confirm('You are about to delete a record. Proceed?')"
                                                 method="POST">
                                                 @csrf
                                                 @method("DELETE")
-                                                <button class="btn btn-danger" type="submit">Remove <i
+                                                <button class="btn btn-danger" type="submit"><i
                                                         class="fa fa-times"></i></button>
                                             </form>
                                         </div>

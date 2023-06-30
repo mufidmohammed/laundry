@@ -38,14 +38,6 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::find($id);
 
-        $order_date = \Carbon\Carbon::create($transaction->order_date)->toDateTimeLocalString();
-
-        $finish_date = $transaction->finish_date ?
-            \Carbon\Carbon::create($transaction->finish_date)->toDateTimeLocalString() : null;
-
-        $transaction->order_date = $order_date;
-        $transaction->finish_date = $finish_date;
-
         $customers = Customer::all();
         $employees = Employee::all();
         $laundries = Laundry::all();
