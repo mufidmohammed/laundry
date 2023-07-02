@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Transaction;
+use App\Exports\TransactionExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Report extends Component
 {
@@ -13,6 +15,14 @@ class Report extends Component
 
     public $start;
     public $end;
+
+    public function export()
+    {
+        $fileName = 'transactions.xlsx';
+        $export = new TransactionExport($this->start, $this->end);
+
+        return Excel::download($export, $fileName);
+    }
 
     public function render()
     {

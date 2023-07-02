@@ -8,7 +8,7 @@
                         <div class="card-heading ml-3">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <a href="" class="btn btn-primary">export to excel</a>
+                                    <button class="btn btn-primary" wire:click="export">export to excel</a>
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group">
