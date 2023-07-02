@@ -9,6 +9,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenditureController;
 use App\Http\Controllers\LaundryTypeController;
 use App\Http\Controllers\TransactionController;
+use GuzzleHttp\Middleware;
+use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +30,9 @@ Route::resource('customer', CustomerController::class)->except('show')->middlewa
 Route::resource('expenditure', ExpenditureController::class)->except('show')->middleware('auth');
 Route::resource('laundry', LaundryController::class)->except('show')->middleware('auth');
 Route::resource('transaction', TransactionController::class)->except('show')->middleware('auth');
+
+Route::get('/report', function () {
+    return view('report');
+})->middleware('auth');
 
 require __DIR__ . '/auth.php';

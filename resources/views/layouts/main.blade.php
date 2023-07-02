@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('plugins\datatables-bs4\css\dataTables.bootstrap4.min.css') }}">
     <!-- Charts -->
     <link rel="stylesheet" href="{{ asset('plugins/chart.js/Chart.min.css') }}">
+
+    @livewireStyles
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -62,6 +64,7 @@
 
     @yield('scripts')
 
+    @livewireScripts
 </body>
 
 </html>
