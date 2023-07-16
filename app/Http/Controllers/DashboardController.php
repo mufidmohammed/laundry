@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Customer;
+use App\Models\Employee;
 use App\Models\Expenditure;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -12,25 +13,44 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $customers = Customer::count();
+        $today = Carbon::today();
 
-        $income = 0;
+        $employees = Employee::count();
+
+        $total_income = 0;
         $total_expense = 0;
+        $daily_income = 0;
+        $daily_expense = 0;
+
+        $daily_customers = Customer::where('created_at', '>=', $today)->count();
 
         $transactions = Transaction::with('laundry')->get();
 
         foreach ($transactions as $transaction) {
-            $income += $transaction->weight * $transaction->laundry->price;
-        }
-        foreach (Expenditure::all() as $expenditure) {
-            $total_expense += $expenditure->total;
+            $total_income += $transaction->weight * $transaction->laundry->price;
+            if ($transaction->created_at >= $today)
+            {
+                $daily_income += $transaction->weight * $transaction->laundry->price;
+            }
         }
 
-        $net_profit = $income - $total_expense;
+        foreach (Expenditure::all() as $expenditure) {
+            $total_expense += $expenditure->total;
+            if ($expenditure->created_at >= $today)
+            {
+                $daily_expense += $expenditure->total;
+            }
+        }
+
+        $net_profit = $total_income - $total_expense;
+        $daily_profit = $daily_income - $daily_expense;
 
         $transactionCounts = $this->transactionCount($transactions);
 
-        return view('dashboard', compact('income', 'customers', 'total_expense', 'net_profit', 'transactionCounts'));
+        return view('dashboard', compact(
+            'total_income', 'employees', 'total_expense', 'net_profit', 'transactionCounts',
+            'daily_income', 'daily_expense', 'daily_customers', 'daily_profit'
+        ));
     }
 
     public function transactionCount($transactions): array
