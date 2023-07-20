@@ -1,5 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
+        <div class="my-4 text-center">
+            <div style="font-size: 28px; font-weight: 900; margin: 10px 0 20px;">Laundry Automation System</div>
+            <div style="font-size: 22px; font-weight: 700; margin: 10px 0 20px;">Login</div>
+        </div>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

@@ -27,27 +27,22 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        {{-- <th>Customer Name<sup>(M/F)</sup></th> --}}
-                                        <th>Employee Name<sup>(M/F)</sup></th>
+                                        <th>Customer Name<sup>(M/F)</sup></th>
                                         <th>Laundry Type</th>
-                                        {{-- <th>Weight</th> --}}
                                         <th>Total</th>
-                                        <th>Order Date</th>
-                                        <th>Finish Date</th>
+                                        <th>Date</th>
                                         <th class="text-center">Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($transactions as $transaction)
                                     <tr>
                                         <td>{{ $transaction->id }}</td>
-                                        {{-- <td>{{ $transaction->customer->name }}</td> --}}
-                                        <td>{{ $transaction->employee->name }}</td>
+                                        <td>{{ $transaction->customer->name }}</td>
                                         <td>{{ $transaction->laundry->type }}</td>
-                                        {{-- <td>{{ $transaction->weight }}</td> --}}
                                         <td>Ghc {{ $transaction->laundry->price * $transaction->weight }}</td>
                                         <td>{{ $transaction->order_date }}</td>
-                                        <td>{{ $transaction->finish_date ? $transaction->finish_date : '----' }}</td>
                                         <td>
                                             <div class="row d-flex justify-content-center">
                                                 <a href="{{ route('transaction.edit', $transaction->id) }}"
@@ -62,6 +57,10 @@
                                                             class="fa fa-times"></i></button>
                                                 </form>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('invoice', $transaction->id) }}"
+                                                class="btn btn-primary ml-2 mb-1">receipt</a>
                                         </td>
                                     </tr>
                                     @endforeach

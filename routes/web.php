@@ -1,16 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LaundryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenditureController;
-use App\Http\Controllers\LaundryTypeController;
+
 use App\Http\Controllers\TransactionController;
-use GuzzleHttp\Middleware;
-use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +22,7 @@ use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
 |
 */
 
+
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::resource('employee', EmployeeController::class)->except('show')->middleware('auth');
@@ -34,5 +34,8 @@ Route::resource('transaction', TransactionController::class)->except('show')->mi
 Route::get('/report', function () {
     return view('report');
 })->middleware('auth');
+
+Route::get('/receipt/{transaction}', [InvoiceController::class, 'invoice'])
+    ->name('invoice')->middleware('auth');
 
 require __DIR__ . '/auth.php';
